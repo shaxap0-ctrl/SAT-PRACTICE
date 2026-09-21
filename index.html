@@ -2,3227 +2,1917 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SAT PRACTICE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SAT PRACTICE — Dictionary</title>
 
 <style>
-:root{
-  --bg:#f5f7fb;
-  --card:#fff;
-  --text:#182033;
-  --muted:#667085;
-  --primary:#315efb;
-  --primary-dark:#2448c9;
-  --border:#e3e8f1;
-  --green:#16a34a;
-  --red:#dc2626;
-  --orange:#d97706;
-  --shadow:0 10px 30px rgba(25,45,85,.08);
-  --radius:18px;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
-
-*{box-sizing:border-box}
-
-html{scroll-behavior:smooth}
 
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0b1120;
+    color:#f8fafc;
+    min-height:100vh;
 }
 
-button,input,select{font:inherit}
-
-button{cursor:pointer}
-
-.navbar{
-  position:sticky;
-  top:0;
-  z-index:999;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid var(--border);
+header{
+    background:#111827;
+    border-bottom:1px solid #263244;
+    padding:18px 25px;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
-.nav-inner{
-  max-width:1250px;
-  margin:auto;
-  padding:14px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
+.header-inner{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
 }
 
 .logo{
-  color:var(--primary);
-  font-weight:950;
-  font-size:21px;
-  letter-spacing:.5px;
-  white-space:nowrap;
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:.5px;
 }
 
-.nav-links{
-  display:flex;
-  gap:5px;
-  flex-wrap:wrap;
+.logo span{
+    color:#60a5fa;
 }
 
-.nav-links button{
-  border:0;
-  background:transparent;
-  color:#596273;
-  font-weight:750;
-  padding:9px 12px;
-  border-radius:10px;
+nav{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
-.nav-links button:hover,
-.nav-links button.active{
-  color:var(--primary);
-  background:#edf1ff;
+nav button{
+    border:0;
+    background:transparent;
+    color:#cbd5e1;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
 }
 
-main{
-  max-width:1250px;
-  margin:auto;
-  padding:32px 20px 70px;
+nav button:hover,
+nav button.active{
+    background:#1e293b;
+    color:white;
 }
 
-.page{display:none}
-.page.active{display:block}
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:35px 20px 60px;
+}
 
 .hero{
-  padding:58px 45px;
-  border:1px solid #dce4ff;
-  border-radius:28px;
-  background:linear-gradient(135deg,#edf2ff,#fff);
-  box-shadow:var(--shadow);
-  margin-bottom:24px;
+    text-align:center;
+    margin-bottom:35px;
 }
 
 .hero h1{
-  font-size:clamp(40px,6vw,70px);
-  line-height:1;
-  margin:0 0 18px;
-  letter-spacing:-2px;
+    font-size:42px;
+    margin-bottom:12px;
 }
-
-.hero h1 span{color:var(--primary)}
 
 .hero p{
-  max-width:720px;
-  color:var(--muted);
-  line-height:1.7;
-  font-size:18px;
-  margin:0 0 25px;
+    color:#94a3b8;
+    font-size:17px;
 }
 
-.btn{
-  border:0;
-  padding:12px 17px;
-  border-radius:11px;
-  font-weight:800;
-  transition:.15s;
+.search-area{
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:25px;
 }
 
-.btn:hover{transform:translateY(-1px)}
-
-.btn-primary{
-  color:#fff;
-  background:var(--primary);
+.search-row{
+    display:flex;
+    gap:12px;
 }
 
-.btn-primary:hover{background:var(--primary-dark)}
-
-.btn-light{
-  color:var(--text);
-  background:#fff;
-  border:1px solid var(--border);
+.search-row input{
+    flex:1;
+    min-width:0;
+    padding:16px 18px;
+    border-radius:12px;
+    border:1px solid #334155;
+    background:#0f172a;
+    color:white;
+    font-size:17px;
+    outline:none;
 }
 
-.btn-success{
-  color:#fff;
-  background:var(--green);
+.search-row input:focus{
+    border-color:#60a5fa;
 }
 
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  margin:35px 0 18px;
+.search-row button{
+    padding:0 22px;
+    border:0;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
 }
 
-.section-title h2{
-  margin:0;
-  font-size:29px;
+.filters{
+    display:flex;
+    gap:10px;
+    margin-top:14px;
+    flex-wrap:wrap;
 }
 
-.section-title p{
-  color:var(--muted);
-  margin:6px 0 0;
+select{
+    background:#0f172a;
+    color:white;
+    border:1px solid #334155;
+    padding:11px 14px;
+    border-radius:9px;
 }
 
-.stat-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+.status{
+    color:#94a3b8;
+    margin-top:15px;
+    font-size:14px;
 }
 
-.stat{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:20px;
-}
-
-.stat-number{
-  color:var(--primary);
-  font-size:32px;
-  font-weight:950;
-}
-
-.stat-label{
-  color:var(--muted);
-  font-size:14px;
-  margin-top:5px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:22px;
-  box-shadow:var(--shadow);
-}
-
-.card h3{margin:0 0 8px}
-
-.card p{
-  color:var(--muted);
-  line-height:1.6;
-}
-
-.toolbar{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:16px;
-}
-
-.input{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:13px;
-  outline:none;
-}
-
-.input:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(49,94,251,.1);
-}
-
-.search{
-  flex:1 1 350px;
-}
-
-.select{min-width:155px}
-
-.dictionary-info{
-  color:var(--muted);
-  font-size:14px;
-  margin:12px 0 16px;
-}
-
-.words-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+.results{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:18px;
 }
 
 .word-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:18px;
-  transition:.15s;
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:16px;
+    padding:20px;
+    transition:.2s;
 }
 
 .word-card:hover{
-  transform:translateY(-2px);
-  box-shadow:var(--shadow);
+    border-color:#3b82f6;
+    transform:translateY(-2px);
 }
 
-.word-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:10px;
+.word-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
 }
 
 .word{
-  font-size:25px;
-  font-weight:950;
-  word-break:break-word;
+    font-size:27px;
+    font-weight:800;
 }
 
-.level{
-  background:#edf1ff;
-  color:var(--primary);
-  border-radius:8px;
-  padding:4px 8px;
-  font-size:11px;
-  font-weight:900;
+.badges{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+}
+
+.badge{
+    font-size:11px;
+    padding:5px 8px;
+    border-radius:6px;
+    background:#1e3a8a;
+    color:#bfdbfe;
 }
 
 .pos{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:5px;
+    color:#a5b4fc;
+    font-style:italic;
+    margin-top:5px;
 }
 
 .translation{
-  margin-top:12px;
-  font-weight:850;
+    margin-top:15px;
+    font-size:18px;
+    font-weight:700;
+    color:#4ade80;
 }
 
 .definition{
-  color:#596273;
-  line-height:1.55;
-  font-size:14px;
-  margin-top:7px;
+    margin-top:10px;
+    color:#cbd5e1;
+    line-height:1.5;
 }
 
 .example{
-  margin-top:11px;
-  padding:10px;
-  border-radius:10px;
-  background:#f7f9fc;
-  color:#596273;
-  font-size:13px;
-  line-height:1.5;
+    margin-top:10px;
+    color:#94a3b8;
+    font-style:italic;
+    line-height:1.5;
 }
 
-.word-actions{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:14px;
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:18px;
 }
 
-.small-btn{
-  border:1px solid var(--border);
-  background:#fff;
-  border-radius:9px;
-  padding:7px 10px;
-  font-size:12px;
-  font-weight:850;
+.buttons button{
+    border:1px solid #334155;
+    background:#172033;
+    color:white;
+    padding:9px 11px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
 }
 
-.small-btn:hover{
-  background:#f7f9ff;
+.buttons button:hover{
+    background:#26354d;
 }
 
-.favorite.active{
-  color:var(--orange);
-  border-color:#efc66e;
-  background:#fff9ed;
+.buttons .us{
+    border-color:#2563eb;
+}
+
+.buttons .uk{
+    border-color:#9333ea;
+}
+
+.buttons .details{
+    background:#2563eb;
+    border-color:#2563eb;
 }
 
 .empty{
-  grid-column:1/-1;
-  padding:40px;
-  background:#fff;
-  border:1px dashed #cdd5e3;
-  border-radius:16px;
-  color:var(--muted);
-  text-align:center;
+    text-align:center;
+    padding:45px;
+    color:#94a3b8;
+    grid-column:1/-1;
 }
 
-.sat-header{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:19px;
-  padding:21px;
-  margin-bottom:17px;
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:500;
 }
 
-.sat-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  flex-wrap:wrap;
+.modal.show{
+    display:flex;
 }
 
-.sat-top h2{margin:0}
-
-.difficulty{
-  display:inline-block;
-  margin-top:9px;
-  background:#f1f5f9;
-  border-radius:8px;
-  padding:5px 9px;
-  font-size:11px;
-  font-weight:900;
+.modal-box{
+    width:min(700px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#111827;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:25px;
 }
 
-.progress-wrap{margin-top:17px}
-
-.progress{
-  height:9px;
-  width:100%;
-  background:#edf0f5;
-  border-radius:999px;
-  overflow:hidden;
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
 }
 
-.progress-fill{
-  height:100%;
-  background:var(--primary);
-  transition:.2s;
+.close{
+    background:#1e293b;
+    border:0;
+    color:white;
+    width:36px;
+    height:36px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:20px;
 }
 
-.question-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:25px;
-  box-shadow:var(--shadow);
+.detail-row{
+    border-bottom:1px solid #263244;
+    padding:14px 0;
 }
 
-.passage{
-  background:#f8fafc;
-  border:1px solid #e7ebf2;
-  border-radius:13px;
-  padding:18px;
-  line-height:1.75;
-  margin-bottom:22px;
+.detail-label{
+    color:#64748b;
+    font-size:12px;
+    text-transform:uppercase;
+    margin-bottom:5px;
 }
 
-.question-label{
-  color:var(--primary);
-  font-size:12px;
-  font-weight:900;
-  margin-bottom:8px;
+.detail-value{
+    color:#f8fafc;
+    line-height:1.6;
 }
 
-.question{
-  font-size:20px;
-  line-height:1.5;
-  font-weight:850;
-  margin-bottom:20px;
+.pronunciation-box{
+    background:#0f172a;
+    border:1px solid #263244;
+    border-radius:12px;
+    padding:15px;
+    margin-top:15px;
 }
 
-.options{
-  display:grid;
-  gap:10px;
+.pronunciation-title{
+    color:#94a3b8;
+    font-size:12px;
+    margin-bottom:10px;
 }
 
-.option{
-  width:100%;
-  text-align:left;
-  padding:14px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:#fff;
-  font-weight:650;
+.pronunciation-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
-.option:hover{
-  background:#f8faff;
-  border-color:#bdc9f8;
+.pronunciation-buttons button{
+    flex:1;
+    min-width:130px;
+    border:0;
+    border-radius:9px;
+    padding:12px;
+    color:white;
+    cursor:pointer;
+    font-weight:700;
 }
 
-.option.selected{
-  background:#edf1ff;
-  border-color:var(--primary);
+.us-large{
+    background:#2563eb;
 }
 
-.option.correct{
-  background:#edfaf1;
-  border-color:#75ca91;
+.uk-large{
+    background:#9333ea;
 }
 
-.option.wrong{
-  background:#fff0f0;
-  border-color:#ee9696;
+.voice-info{
+    margin-top:10px;
+    color:#64748b;
+    font-size:12px;
 }
-
-.explanation{
-  display:none;
-  margin-top:18px;
-  padding:15px;
-  border-radius:12px;
-  background:#f7f9fc;
-  line-height:1.6;
-}
-
-.explanation.show{display:block}
-
-.controls{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:20px;
-}
-
-.tabs{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-bottom:18px;
-}
-
-.tabs button{
-  border:1px solid var(--border);
-  background:#fff;
-  border-radius:10px;
-  padding:10px 15px;
-  font-weight:850;
-}
-
-.tabs button.active{
-  color:#fff;
-  background:var(--primary);
-  border-color:var(--primary);
-}
-
-.question-nav{
-  display:grid;
-  grid-template-columns:repeat(15,1fr);
-  gap:5px;
-  margin-top:17px;
-}
-
-.qbtn{
-  border:1px solid var(--border);
-  background:#fff;
-  min-height:34px;
-  border-radius:7px;
-  font-size:11px;
-  font-weight:800;
-}
-
-.qbtn.current{
-  background:var(--primary);
-  color:#fff;
-  border-color:var(--primary);
-}
-
-.qbtn.done{
-  background:#eaf8ef;
-  color:#15803d;
-  border-color:#b5dfc2;
-}
-
-.toast{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:5000;
-  display:none;
-  max-width:330px;
-  padding:13px 16px;
-  border-radius:11px;
-  color:#fff;
-  background:#182033;
-  box-shadow:var(--shadow);
-}
-
-.toast.show{display:block}
 
 footer{
-  text-align:center;
-  padding:35px;
-  color:var(--muted);
+    text-align:center;
+    color:#64748b;
+    padding:25px;
+    border-top:1px solid #1e293b;
 }
 
-@media(max-width:950px){
-  .words-grid,.grid{grid-template-columns:repeat(2,1fr)}
-  .stat-grid{grid-template-columns:repeat(2,1fr)}
-  .question-nav{grid-template-columns:repeat(10,1fr)}
-}
+@media(max-width:700px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
-@media(max-width:650px){
-  .nav-inner{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+    nav{
+        width:100%;
+        overflow-x:auto;
+    }
 
-  .nav-links{
-    width:100%;
-    overflow-x:auto;
-    flex-wrap:nowrap;
-  }
+    .hero h1{
+        font-size:32px;
+    }
 
-  main{padding:20px 13px 50px}
+    .search-row{
+        flex-direction:column;
+    }
 
-  .hero{padding:35px 22px}
-
-  .words-grid,.grid,.stat-grid{
-    grid-template-columns:1fr;
-  }
-
-  .question-nav{
-    grid-template-columns:repeat(6,1fr);
-  }
+    .search-row button{
+        padding:13px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<nav class="navbar">
-  <div class="nav-inner">
+<header>
+    <div class="header-inner">
+        <div class="logo">
+            SAT <span>PRACTICE</span>
+        </div>
 
-    <div class="logo">SAT PRACTICE</div>
-
-    <div class="nav-links">
-      <button class="nav-btn active" data-page="home">Home</button>
-      <button class="nav-btn" data-page="dictionary">Dictionary</button>
-      <button class="nav-btn" data-page="satEnglish">SAT English</button>
-      <button class="nav-btn" data-page="satMath">SAT Math</button>
-      <button class="nav-btn" data-page="progress">Progress</button>
+        <nav>
+            <button>Home</button>
+            <button class="active">Dictionary</button>
+            <button>SAT English</button>
+            <button>SAT Math</button>
+            <button>Progress</button>
+        </nav>
     </div>
-
-  </div>
-</nav>
-
-
-<main>
-
-<section id="home" class="page active">
-
-  <div class="hero">
-    <h1>Master the <span>SAT.</span></h1>
-
-    <p>
-      Build vocabulary, practice SAT English and Math,
-      improve pronunciation, and track your progress.
-    </p>
-
-    <button class="btn btn-primary"
-            onclick="showPage('dictionary')">
-      Start Practicing
-    </button>
-  </div>
-
-  <div class="stat-grid">
-
-    <div class="stat">
-      <div class="stat-number" id="wordCountHome">10,000+</div>
-      <div class="stat-label">English words</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number">240+</div>
-      <div class="stat-label">SAT English questions</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number">120+</div>
-      <div class="stat-label">SAT Math questions</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number">A1–C2</div>
-      <div class="stat-label">Vocabulary levels</div>
-    </div>
-
-  </div>
-
-  <div class="section-title">
-    <div>
-      <h2>Practice Areas</h2>
-      <p>Everything you need for SAT preparation.</p>
-    </div>
-  </div>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>📚 Dictionary</h3>
-      <p>
-        Search basic, intermediate and advanced English vocabulary.
-      </p>
-      <button class="btn btn-light"
-              onclick="showPage('dictionary')">
-        Open Dictionary
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>✍️ SAT English</h3>
-      <p>
-        Reading and Writing questions from Easy to Hard.
-      </p>
-      <button class="btn btn-light"
-              onclick="showPage('satEnglish')">
-        Practice English
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>📐 SAT Math</h3>
-      <p>
-        Algebra, advanced math, geometry and data analysis.
-      </p>
-      <button class="btn btn-light"
-              onclick="showPage('satMath')">
-        Practice Math
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<section id="dictionary" class="page">
-
-  <div class="section-title">
-    <div>
-      <h2>English Dictionary</h2>
-      <p>Search the complete loaded English word bank.</p>
-    </div>
-  </div>
-
-  <div class="card">
-
-    <div class="toolbar">
-
-      <input
-        id="wordSearch"
-        class="input search"
-        type="search"
-        placeholder="Search: generation, something, ubiquitous..."
-        autocomplete="off"
-      >
-
-      <select id="levelFilter" class="input select">
-        <option value="ALL">All Levels</option>
-        <option value="A1">A1</option>
-        <option value="A2">A2</option>
-        <option value="B1">B1</option>
-        <option value="B2">B2</option>
-        <option value="C1">C1</option>
-        <option value="C2">C2</option>
-      </select>
-
-      <select id="posFilter" class="input select">
-        <option value="ALL">All Parts of Speech</option>
-        <option value="noun">Noun</option>
-        <option value="verb">Verb</option>
-        <option value="adjective">Adjective</option>
-        <option value="adverb">Adverb</option>
-        <option value="pronoun">Pronoun</option>
-        <option value="determiner">Determiner</option>
-        <option value="preposition">Preposition</option>
-        <option value="conjunction">Conjunction</option>
-        <option value="other">Other</option>
-      </select>
-
-      <button class="btn btn-light"
-              onclick="toggleFavorites()">
-        ★ Favorites
-      </button>
-
-    </div>
-
-    <div id="dictionaryInfo"
-         class="dictionary-info">
-      Loading complete English word bank...
-    </div>
-
-    <div id="wordsGrid"
-         class="words-grid"></div>
-
-  </div>
-
-</section>
-
-
-<section id="satEnglish" class="page">
-
-  <div class="section-title">
-    <div>
-      <h2>SAT English</h2>
-      <p>Reading and Writing practice.</p>
-    </div>
-  </div>
-
-  <div class="tabs">
-
-    <button id="readingTab"
-            class="active"
-            onclick="switchEnglish('reading')">
-      Reading
-    </button>
-
-    <button id="writingTab"
-            onclick="switchEnglish('writing')">
-      Writing
-    </button>
-
-  </div>
-
-  <div id="englishQuiz"></div>
-
-</section>
-
-
-<section id="satMath" class="page">
-
-  <div class="section-title">
-    <div>
-      <h2>SAT Math</h2>
-      <p>120 questions from Easy to Hard.</p>
-    </div>
-  </div>
-
-  <div id="mathQuiz"></div>
-
-</section>
-
-
-<section id="progress" class="page">
-
-  <div class="section-title">
-    <div>
-      <h2>Your Progress</h2>
-      <p>Saved automatically in your browser.</p>
-    </div>
-  </div>
-
-  <div class="stat-grid">
-
-    <div class="stat">
-      <div class="stat-number" id="favCount">0</div>
-      <div class="stat-label">Favorite words</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number" id="readingScore">0</div>
-      <div class="stat-label">Reading correct</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number" id="writingScore">0</div>
-      <div class="stat-label">Writing correct</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number" id="mathScore">0</div>
-      <div class="stat-label">Math correct</div>
-    </div>
-
-  </div>
-
-  <div class="section-title">
-    <div>
-      <h2>Performance</h2>
-    </div>
-  </div>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Reading</h3>
-      <p id="readingText">0 correct out of 0 attempted.</p>
-    </div>
-
-    <div class="card">
-      <h3>Writing</h3>
-      <p id="writingText">0 correct out of 0 attempted.</p>
-    </div>
-
-    <div class="card">
-      <h3>Math</h3>
-      <p id="mathText">0 correct out of 0 attempted.</p>
-    </div>
-
-  </div>
-
-</section>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <h1>English Dictionary</h1>
+        <p>Search a word and get its meaning, details and US / UK pronunciation.</p>
+    </section>
+
+    <section class="search-area">
+
+        <div class="search-row">
+            <input
+                id="searchInput"
+                type="text"
+                autocomplete="off"
+                placeholder="Search any English word..."
+            >
+
+            <button id="searchButton">
+                Search
+            </button>
+        </div>
+
+        <div class="filters">
+
+            <select id="levelFilter">
+                <option value="all">All Levels</option>
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="C1">C1</option>
+                <option value="C2">C2</option>
+            </select>
+
+            <select id="posFilter">
+                <option value="all">All Parts of Speech</option>
+                <option value="noun">Noun</option>
+                <option value="verb">Verb</option>
+                <option value="adjective">Adjective</option>
+                <option value="adverb">Adverb</option>
+                <option value="pronoun">Pronoun</option>
+                <option value="preposition">Preposition</option>
+                <option value="conjunction">Conjunction</option>
+            </select>
+
+        </div>
+
+        <div class="status" id="status">
+            Loading English word bank...
+        </div>
+
+    </section>
+
+    <section id="results" class="results"></section>
 
 </main>
 
-
 <footer>
-  SAT PRACTICE • Original practice system
+    SAT PRACTICE © 2026
 </footer>
 
-<div id="toast" class="toast"></div>
+
+<!-- DETAILS MODAL -->
+
+<div id="modal" class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+            <h2 id="modalWord">Word</h2>
+            <button class="close" id="closeModal">×</button>
+        </div>
+
+        <div id="modalContent">
+            Loading...
+        </div>
+
+    </div>
+
+</div>
 
 
 <script>
 
 /* =========================================================
-   STORAGE
+   CORE WORDS
+   These are guaranteed to exist even if the external
+   word list cannot be loaded.
 ========================================================= */
 
-const FAV_KEY = "sat_practice_favorites_final";
-const STATS_KEY = "sat_practice_stats_final";
+const CORE_WORDS = {
 
-let favorites =
-  JSON.parse(localStorage.getItem(FAV_KEY) || "[]");
+    "something":{
+        uz:"nimadir, biror narsa",
+        pos:"pronoun",
+        level:"A1",
+        definition:"An unspecified thing or matter.",
+        example:"I need something to eat.",
+        synonyms:"thing, anything"
+    },
 
-let stats =
-  JSON.parse(
-    localStorage.getItem(STATS_KEY) ||
-    JSON.stringify({
-      readingCorrect:0,
-      readingAttempted:0,
-      writingCorrect:0,
-      writingAttempted:0,
-      mathCorrect:0,
-      mathAttempted:0
-    })
-  );
+    "someone":{
+        uz:"kimdir",
+        pos:"pronoun",
+        level:"A1",
+        definition:"An unspecified person.",
+        example:"Someone is waiting outside.",
+        synonyms:"somebody"
+    },
 
-function saveFavorites(){
-  localStorage.setItem(
-    FAV_KEY,
-    JSON.stringify(favorites)
-  );
-}
+    "somewhere":{
+        uz:"qayerdadir, biror joyda",
+        pos:"adverb",
+        level:"A1",
+        definition:"In or at an unspecified place.",
+        example:"I left my phone somewhere.",
+        synonyms:"someplace"
+    },
 
-function saveStats(){
-  localStorage.setItem(
-    STATS_KEY,
-    JSON.stringify(stats)
-  );
-}
+    "somebody":{
+        uz:"kimdir",
+        pos:"pronoun",
+        level:"A1",
+        definition:"An unspecified person.",
+        example:"Somebody called you.",
+        synonyms:"someone"
+    },
+
+    "anything":{
+        uz:"biror narsa, hech narsa",
+        pos:"pronoun",
+        level:"A1",
+        definition:"A thing of any kind.",
+        example:"Do you need anything?",
+        synonyms:"something, whatever"
+    },
+
+    "anyone":{
+        uz:"har kim, biror kishi",
+        pos:"pronoun",
+        level:"A1",
+        definition:"Any person.",
+        example:"Can anyone help me?",
+        synonyms:"anybody"
+    },
+
+    "anywhere":{
+        uz:"istalgan joyda",
+        pos:"adverb",
+        level:"A1",
+        definition:"In or to any place.",
+        example:"You can sit anywhere.",
+        synonyms:"wherever"
+    },
+
+    "nothing":{
+        uz:"hech narsa",
+        pos:"pronoun",
+        level:"A1",
+        definition:"Not anything; no thing.",
+        example:"There is nothing here.",
+        synonyms:"naught"
+    },
+
+    "nobody":{
+        uz:"hech kim",
+        pos:"pronoun",
+        level:"A1",
+        definition:"No person.",
+        example:"Nobody knows the answer.",
+        synonyms:"no one"
+    },
+
+    "nowhere":{
+        uz:"hech qayerda",
+        pos:"adverb",
+        level:"A1",
+        definition:"Not in or to any place.",
+        example:"There was nowhere to sit.",
+        synonyms:"no place"
+    },
+
+    "everyone":{
+        uz:"hamma",
+        pos:"pronoun",
+        level:"A1",
+        definition:"Every person.",
+        example:"Everyone enjoyed the lesson.",
+        synonyms:"everybody"
+    },
+
+    "everything":{
+        uz:"hamma narsa",
+        pos:"pronoun",
+        level:"A1",
+        definition:"All things.",
+        example:"Everything is ready.",
+        synonyms:"all"
+    },
+
+    "everywhere":{
+        uz:"hamma joyda",
+        pos:"adverb",
+        level:"A1",
+        definition:"In or to every place.",
+        example:"I looked everywhere.",
+        synonyms:"all around"
+    },
+
+    "close":{
+        uz:"yopmoq; yaqin",
+        pos:"verb",
+        level:"A1",
+        definition:"To shut something or to be near.",
+        example:"Please close the door.",
+        synonyms:"shut, near"
+    },
+
+    "start":{
+        uz:"boshlamoq",
+        pos:"verb",
+        level:"A1",
+        definition:"To begin doing something.",
+        example:"Let's start the lesson.",
+        synonyms:"begin, commence"
+    },
+
+    "open":{
+        uz:"ochmoq; ochiq",
+        pos:"verb",
+        level:"A1",
+        definition:"To move something so that it is not closed.",
+        example:"Open the window.",
+        synonyms:"unlock, uncover"
+    },
+
+    "begin":{
+        uz:"boshlamoq",
+        pos:"verb",
+        level:"A1",
+        definition:"To start doing something.",
+        example:"The class will begin soon.",
+        synonyms:"start, commence"
+    },
+
+    "go":{
+        uz:"bormoq",
+        pos:"verb",
+        level:"A1",
+        definition:"To move from one place to another.",
+        example:"I go to school every day.",
+        synonyms:"travel, move"
+    },
+
+    "come":{
+        uz:"kelmoq",
+        pos:"verb",
+        level:"A1",
+        definition:"To move toward or arrive at a place.",
+        example:"Come here, please.",
+        synonyms:"arrive, approach"
+    },
+
+    "make":{
+        uz:"qilmoq, yasamoq",
+        pos:"verb",
+        level:"A1",
+        definition:"To create, produce, or cause something.",
+        example:"She made a cake.",
+        synonyms:"create, produce"
+    },
+
+    "take":{
+        uz:"olmoq",
+        pos:"verb",
+        level:"A1",
+        definition:"To get or carry something.",
+        example:"Take your book.",
+        synonyms:"get, carry"
+    },
+
+    "generation":{
+        uz:"avlod; avlod, ishlab chiqarish jarayoni",
+        pos:"noun",
+        level:"B2",
+        definition:"All the people born and living at about the same time; also the act of producing something.",
+        example:"The younger generation uses technology every day.",
+        synonyms:"age group, production"
+    },
+
+    "ubiquitous":{
+        uz:"hamma joyda mavjud",
+        pos:"adjective",
+        level:"C2",
+        definition:"Present, appearing, or found everywhere.",
+        example:"Smartphones have become ubiquitous.",
+        synonyms:"omnipresent, universal"
+    },
+
+    "meticulous":{
+        uz:"juda sinchkov, puxta",
+        pos:"adjective",
+        level:"C1",
+        definition:"Very careful and precise about details.",
+        example:"She is meticulous about her work.",
+        synonyms:"careful, precise, thorough"
+    },
+
+    "exacerbate":{
+        uz:"yanada yomonlashtirmoq",
+        pos:"verb",
+        level:"C1",
+        definition:"To make a problem or bad situation worse.",
+        example:"The delay exacerbated the problem.",
+        synonyms:"worsen, aggravate"
+    },
+
+    "corroborate":{
+        uz:"tasdiqlamoq",
+        pos:"verb",
+        level:"C1",
+        definition:"To support a statement or theory with evidence.",
+        example:"The evidence corroborated his story.",
+        synonyms:"confirm, verify, support"
+    },
+
+    "contentious":{
+        uz:"bahsli",
+        pos:"adjective",
+        level:"C1",
+        definition:"Likely to cause disagreement or argument.",
+        example:"The issue remains contentious.",
+        synonyms:"controversial, disputed"
+    },
+
+    "unequivocal":{
+        uz:"aniq, ikki ma'nosiz",
+        pos:"adjective",
+        level:"C2",
+        definition:"Leaving no doubt about meaning or intention.",
+        example:"She gave an unequivocal answer.",
+        synonyms:"clear, definite, explicit"
+    },
+
+    "deleterious":{
+        uz:"zararli",
+        pos:"adjective",
+        level:"C2",
+        definition:"Causing harm or damage.",
+        example:"Smoking has deleterious effects.",
+        synonyms:"harmful, damaging"
+    },
+
+    "quintessential":{
+        uz:"eng tipik, mukammal namuna",
+        pos:"adjective",
+        level:"C2",
+        definition:"Representing the most typical or perfect example of something.",
+        example:"He is the quintessential professional.",
+        synonyms:"typical, classic"
+    },
+
+    "juxtapose":{
+        uz:"yonma-yon qo‘ymoq, taqqoslamoq",
+        pos:"verb",
+        level:"C2",
+        definition:"To place two things close together in order to compare them.",
+        example:"The artist juxtaposed old and new images.",
+        synonyms:"compare, contrast"
+    },
+
+    "circumvent":{
+        uz:"chetlab o'tmoq",
+        pos:"verb",
+        level:"C1",
+        definition:"To avoid a problem, rule, or restriction.",
+        example:"They found a way to circumvent the restriction.",
+        synonyms:"avoid, bypass, evade"
+    }
+
+};
 
 
 /* =========================================================
-   NAVIGATION
+   STATE
 ========================================================= */
 
-function showPage(id){
-
-  document.querySelectorAll(".page")
-    .forEach(p=>p.classList.remove("active"));
-
-  document.getElementById(id)
-    .classList.add("active");
-
-  document.querySelectorAll(".nav-btn")
-    .forEach(btn=>{
-      btn.classList.toggle(
-        "active",
-        btn.dataset.page===id
-      );
-    });
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-  if(id==="progress"){
-    updateProgress();
-  }
-}
-
-document.querySelectorAll(".nav-btn")
-.forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    showPage(btn.dataset.page);
-  });
-});
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-function toast(message){
-
-  const el =
-    document.getElementById("toast");
-
-  el.textContent = message;
-  el.classList.add("show");
-
-  clearTimeout(toastTimer);
-
-  toastTimer =
-    setTimeout(()=>{
-      el.classList.remove("show");
-    },2200);
-}
-
-
-/* =========================================================
-   PRONUNCIATION ENGINE
-========================================================= */
-
-/*
-  IMPORTANT:
-
-  We NEVER wait for an online API before speaking.
-
-  Button click:
-      ↓
-  speechSynthesis.cancel()
-      ↓
-  select exact US / UK voice
-      ↓
-  speechSynthesis.speak()
-
-  This makes playback start immediately.
-
-  Web Speech voices are supplied by the current device/browser.
-*/
-
-const synth =
-  window.speechSynthesis || null;
+let allWords = new Set();
+let wordData = new Map();
 
 let voices = [];
 
-const US_NAMES = [
-  "Google US English",
-  "Microsoft Aria Online (Natural) - English (United States)",
-  "Microsoft Jenny Online (Natural) - English (United States)",
-  "Microsoft Zira",
-  "Samantha",
-  "Alex"
-];
+const WORD_LIST_URL =
+"https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt";
 
-const UK_NAMES = [
-  "Google UK English Female",
-  "Google UK English Male",
-  "Microsoft Sonia Online (Natural) - English (United Kingdom)",
-  "Microsoft Ryan Online (Natural) - English (United Kingdom)",
-  "Daniel",
-  "Kate"
-];
 
+/* =========================================================
+   VOICE SYSTEM
+========================================================= */
 
 function loadVoices(){
 
-  if(!synth) return;
+    if(!("speechSynthesis" in window)){
+        return;
+    }
 
-  voices =
-    synth.getVoices() || [];
+    voices = speechSynthesis.getVoices();
+
 }
-
-
-/*
-  Chrome and some other browsers populate voices
-  asynchronously.
-*/
 
 loadVoices();
 
-if(synth){
+if("speechSynthesis" in window){
 
-  synth.addEventListener(
-    "voiceschanged",
-    loadVoices
-  );
+    speechSynthesis.onvoiceschanged = () => {
+        loadVoices();
+    };
 
 }
 
 
-/*
-  Find the best voice.
+/* Best voice for US */
 
-  Priority:
-  1. exact locale + preferred native voice
-  2. exact locale
-  3. locale prefix
-  4. generic English fallback
-*/
+function getUSVoice(){
 
-function findVoice(locale){
+    if(!voices.length) return null;
 
-  if(!voices.length){
-    loadVoices();
-  }
-
-  const wantedNames =
-    locale==="en-US"
-      ? US_NAMES
-      : UK_NAMES;
-
-  /*
-    Preferred voice with exact locale.
-  */
-
-  for(const preferred of wantedNames){
-
-    const found =
-      voices.find(v=>
-        v.name===preferred &&
-        v.lang.toLowerCase()===locale.toLowerCase()
-      );
-
-    if(found) return found;
-  }
-
-
-  /*
-    Any exact locale voice.
-  */
-
-  const exact =
-    voices.find(v=>
-      v.lang &&
-      v.lang.toLowerCase()===
-      locale.toLowerCase()
+    const exact = voices.filter(v =>
+        v.lang.toLowerCase() === "en-us"
     );
 
-  if(exact) return exact;
+    const preferredNames = [
+        "Google US English",
+        "Microsoft Zira",
+        "Samantha",
+        "Alex",
+        "Karen",
+        "Ava",
+        "Jenny",
+        "Aria"
+    ];
 
+    for(const name of preferredNames){
 
-  /*
-    Regional voice.
-  */
+        const found = exact.find(v =>
+            v.name.toLowerCase().includes(name.toLowerCase())
+        );
 
-  const regional =
-    voices.find(v=>
-      v.lang &&
-      v.lang.toLowerCase()
-      .startsWith(locale.slice(0,2).toLowerCase())
-    );
+        if(found) return found;
+    }
 
-  return regional || null;
+    if(exact.length) return exact[0];
+
+    return voices.find(v =>
+        v.lang.toLowerCase().startsWith("en-us")
+    ) || null;
 }
 
 
-/*
-  Immediate speech.
+/* Best voice for UK */
 
-  We deliberately do NOT use async/await here.
-  We do NOT fetch anything.
-*/
+function getUKVoice(){
+
+    if(!voices.length) return null;
+
+    const exact = voices.filter(v =>
+        v.lang.toLowerCase() === "en-gb"
+    );
+
+    const preferredNames = [
+        "Google UK English Female",
+        "Google UK English Male",
+        "Daniel",
+        "Kate",
+        "Serena",
+        "Libby",
+        "Ryan",
+        "Oliver"
+    ];
+
+    for(const name of preferredNames){
+
+        const found = exact.find(v =>
+            v.name.toLowerCase().includes(name.toLowerCase())
+        );
+
+        if(found) return found;
+    }
+
+    if(exact.length) return exact[0];
+
+    return voices.find(v =>
+        v.lang.toLowerCase().startsWith("en-gb")
+    ) || null;
+}
+
+
+/* =========================================================
+   PRONUNCIATION
+========================================================= */
 
 function speakWord(word, accent){
 
-  if(!synth){
+    if(!("speechSynthesis" in window)){
 
-    toast("Speech is not supported by this browser.");
-    return;
-  }
+        alert(
+            "Your browser does not support speech synthesis. Please use Chrome, Edge, Safari or another modern browser."
+        );
 
-  const locale =
-    accent==="UK"
-      ? "en-GB"
-      : "en-US";
-
-  /*
-    Stop any previous word immediately.
-  */
-
-  synth.cancel();
-
-  const utterance =
-    new SpeechSynthesisUtterance(word);
-
-  /*
-    Set locale BEFORE speaking.
-  */
-
-  utterance.lang = locale;
-
-  /*
-    Select actual device voice.
-  */
-
-  const voice =
-    findVoice(locale);
-
-  if(voice){
-    utterance.voice = voice;
-  }
-
-  /*
-    Natural but quick vocabulary speed.
-  */
-
-  utterance.rate = 0.98;
-  utterance.pitch = 1;
-  utterance.volume = 1;
-
-  /*
-    Some browsers can remain paused.
-  */
-
-  if(synth.paused){
-    synth.resume();
-  }
-
-  /*
-    This call happens directly from the user's
-    button click — no network request first.
-  */
-
-  synth.speak(utterance);
-}
-
-
-/*
-  Warm the browser voice list.
-*/
-
-setTimeout(loadVoices,50);
-setTimeout(loadVoices,300);
-setTimeout(loadVoices,1000);
-
-
-/* =========================================================
-   CURATED COMMON + SAT WORDS
-========================================================= */
-
-const curated = [
-
-/* BASIC PRONOUNS / DETERMINERS */
-
-["something","A1","pronoun","biror narsa","an unspecified thing","I need something to eat."],
-["someone","A1","pronoun","kimdir","an unspecified person","Someone called you."],
-["somebody","A1","pronoun","kimdir","an unspecified person","Somebody left a message."],
-["somewhere","A1","adverb","biror joyda","an unspecified place","I left it somewhere."],
-["anything","A1","pronoun","biror narsa","any thing at all","Do you need anything?"],
-["anyone","A1","pronoun","biror kishi","any person","Can anyone help me?"],
-["anybody","A1","pronoun","biror kishi","any person","Anybody can learn this."],
-["anywhere","A1","adverb","istalgan joyda","in or to any place","You can sit anywhere."],
-["nothing","A1","pronoun","hech narsa","not anything","There is nothing here."],
-["nobody","A1","pronoun","hech kim","not any person","Nobody knows the answer."],
-["no one","A1","pronoun","hech kim","not a single person","No one was late."],
-["nowhere","A1","adverb","hech qayerda","not in any place","The key is nowhere to be found."],
-["everything","A1","pronoun","hamma narsa","all things","Everything is ready."],
-["everyone","A1","pronoun","hamma","every person","Everyone enjoyed the lesson."],
-["everybody","A1","pronoun","hamma","every person","Everybody needs practice."],
-["everywhere","A1","adverb","hamma joyda","in all places","English is used everywhere."],
-["each","A1","determiner","har biri","every one considered separately","Each student received a book."],
-["both","A1","determiner","ikkalasi ham","the two together","Both answers are correct."],
-["either","A2","determiner","ikkalasidan biri","one of two","Either option is possible."],
-["neither","A2","determiner","ikkalasidan hech biri","not one of two","Neither answer is correct."],
-["another","A1","determiner","yana bir, boshqa bir","one more or a different one","Can I have another example?"],
-["other","A1","determiner","boshqa","different from the one mentioned","Try the other method."],
-["others","A1","pronoun","boshqalar","other people or things","Some agreed; others disagreed."],
-
-/* BASIC VERBS */
-
-["be","A1","verb","bo'lmoq","to exist or have a state","I want to be ready."],
-["have","A1","verb","ega bo'lmoq","to possess or experience","I have a question."],
-["do","A1","verb","qilmoq","to perform an action","Do your homework."],
-["go","A1","verb","bormoq","to move from one place to another","I go to school."],
-["come","A1","verb","kelmoq","to move toward a place or person","Come here."],
-["make","A1","verb","qilmoq, yasamoq","to create or produce","They make useful tools."],
-["take","A1","verb","olmoq","to get, carry, or move something","Take your book."],
-["give","A1","verb","bermoq","to provide something","Give me the answer."],
-["get","A1","verb","olmoq, ega bo'lmoq","to receive or obtain","I got a new book."],
-["put","A1","verb","qo'ymoq","to place something somewhere","Put it on the table."],
-["know","A1","verb","bilmoq","to have knowledge of something","I know the answer."],
-["think","A1","verb","o'ylamoq","to use your mind to consider something","Think about the question."],
-["see","A1","verb","ko'rmoq","to notice with your eyes","I can see the problem."],
-["look","A1","verb","qaramoq","to direct your eyes toward something","Look at the graph."],
-["want","A1","verb","xohlamoq","to desire something","I want to improve."],
-["need","A1","verb","kerak bo'lmoq","to require something","You need practice."],
-["use","A1","verb","ishlatmoq","to employ something","Use this method."],
-["find","A1","verb","topmoq","to discover or locate","Find the correct answer."],
-["tell","A1","verb","aytmoq","to give information to someone","Tell me the answer."],
-["ask","A1","verb","so'ramoq","to request information","Ask a question."],
-["work","A1","verb","ishlamoq","to perform a task","The method works."],
-["try","A1","verb","urinmoq","to attempt something","Try again."],
-["feel","A1","verb","his qilmoq","to experience an emotion or sensation","I feel confident."],
-["become","A2","verb","bo'lmoq, aylanmoq","to begin to be something","She became confident."],
-["leave","A1","verb","tark etmoq","to go away from a place","They left early."],
-["keep","A2","verb","saqlamoq","to continue to have something","Keep your notes."],
-["let","A2","verb","ruxsat bermoq","to allow someone to do something","Let me explain."],
-["begin","A1","verb","boshlamoq","to start","The test will begin soon."],
-["start","A1","verb","boshlamoq","to begin","The class starts at nine."],
-["close","A1","verb","yopmoq","to shut something","Close the door."],
-["open","A1","verb","ochmoq","to move something so it is not closed","Open the book."],
-["help","A1","verb","yordam bermoq","to make something easier","Can you help me?"],
-["learn","A1","verb","o'rganmoq","to gain knowledge","Students learn through practice."],
-["remember","A2","verb","eslamoq","to keep something in memory","Remember this rule."],
-["forget","A2","verb","unutmoq","to fail to remember","Do not forget the formula."],
-["improve","A2","verb","yaxshilamoq","to become better","Practice improves performance."],
-["change","A2","verb","o'zgartirmoq","to make different","Technology changes quickly."],
-["decide","A2","verb","qaror qilmoq","to choose after thinking","She decided to study."],
-["explain","A2","verb","tushuntirmoq","to make something clear","Explain your answer."],
-["understand","A2","verb","tushunmoq","to know the meaning of something","I understand the rule."],
-
-/* BASIC CONNECTORS */
-
-["and","A1","conjunction","va","used to connect ideas","Tom and Anna studied."],
-["but","A1","conjunction","lekin","used to show contrast","It is difficult but possible."],
-["or","A1","conjunction","yoki","used to show alternatives","Choose A or B."],
-["because","A1","conjunction","chunki","for the reason that","I studied because I had a test."],
-["so","A1","conjunction","shuning uchun","for that reason","It was late, so we left."],
-["although","B1","conjunction","garchi","despite the fact that","Although it was difficult, she continued."],
-["however","B1","adverb","biroq","used to introduce a contrast","The task was difficult; however, she succeeded."],
-["therefore","B1","adverb","shuning uchun","for that reason","The evidence was weak; therefore, the claim was rejected."],
-["moreover","B2","adverb","bundan tashqari","in addition","Moreover, the results were consistent."],
-["nevertheless","B2","adverb","shunga qaramay","despite that","Nevertheless, the method worked."],
-["whereas","B2","conjunction","holbuki","while showing contrast","One method is fast, whereas the other is accurate."],
-["while","A2","conjunction","... paytida; holbuki","during the time that or showing contrast","While one group improved, another did not."],
-
-/* A1/A2 */
-
-["school","A1","noun","maktab","a place where students study","The school is nearby."],
-["student","A1","noun","o'quvchi, talaba","a person who studies","She is a good student."],
-["teacher","A1","noun","o'qituvchi","a person who teaches","The teacher explained the rule."],
-["book","A1","noun","kitob","a written work","I read a book."],
-["house","A1","noun","uy","a building where people live","Their house is large."],
-["friend","A1","noun","do'st","a person you like and trust","He is my friend."],
-["answer","A2","noun","javob","a response to a question","I know the answer."],
-["question","A2","noun","savol","something asked to get information","This question is difficult."],
-["reason","A2","noun","sabab","a cause or explanation","What is the reason?"],
-["result","A2","noun","natija","something produced by an action","The result was surprising."],
-["future","A2","noun","kelajak","the time after now","Think about your future."],
-["problem","A2","noun","muammo","a difficult situation","We need to solve the problem."],
-["solution","B1","noun","yechim","an answer to a problem","They found a solution."],
-["example","A2","noun","misol","something that shows what something is like","Give me an example."],
-["idea","A1","noun","g'oya","a thought or plan","That is a good idea."],
-["important","A2","adjective","muhim","having great value","Education is important."],
-["different","A2","adjective","boshqacha","not the same","These ideas are different."],
-["possible","A2","adjective","mumkin","able to happen or be done","Anything is possible."],
-["simple","A2","adjective","oddiy","easy to understand","The solution is simple."],
-["difficult","A2","adjective","qiyin","not easy to do","The question is difficult."],
-["easy","A1","adjective","oson","not difficult","This exercise is easy."],
-
-/* B1/B2 */
-
-["achieve","B1","verb","erishmoq","to successfully reach a goal","She achieved her goal."],
-["benefit","B1","noun","foyda","an advantage or useful effect","Exercise has many benefits."],
-["challenge","B1","noun","qiyinchilik","a difficult task or situation","The exam was a challenge."],
-["develop","B1","verb","rivojlantirmoq","to grow or improve","Students develop new skills."],
-["environment","B1","noun","atrof-muhit","the natural world or surroundings","Protect the environment."],
-["evidence","B1","noun","dalil","information supporting an idea","The evidence supports the claim."],
-["increase","B1","verb","oshirmoq","to become greater","Prices increased."],
-["reduce","B1","verb","kamaytirmoq","to make smaller or less","We should reduce waste."],
-["require","B1","verb","talab qilmoq","to need something","The course requires practice."],
-["support","B1","verb","qo'llab-quvvatlamoq","to help or provide evidence","The data supports the theory."],
-["suggest","B1","verb","taklif qilmoq","to mention an idea","The results suggest a pattern."],
-["approach","B1","noun","yondashuv","a way of dealing with something","We need a new approach."],
-["analyze","B2","verb","tahlil qilmoq","to examine carefully","Students analyze the data."],
-["assume","B2","verb","faraz qilmoq","to accept as true without proof","Do not assume the answer."],
-["contrast","B2","verb","qarama-qarshi qo'ymoq","to compare differences","The essay contrasts two ideas."],
-["contribute","B2","verb","hissa qo'shmoq","to help cause something","Exercise contributes to health."],
-["establish","B2","verb","o'rnatmoq, tasdiqlamoq","to create or prove firmly","The study established a pattern."],
-["indicate","B2","verb","ko'rsatmoq","to show","The results indicate progress."],
-["interpret","B2","verb","talqin qilmoq","to explain meaning","Interpret the graph."],
-["maintain","B2","verb","saqlab qolmoq","to keep something in a condition","Maintain focus."],
-["significant","B2","adjective","muhim, sezilarli","important or noticeable","There was a significant increase."],
-["substantial","B2","adjective","katta, sezilarli","large in amount or importance","The project needs substantial funding."],
-["valid","B2","adjective","asosli","based on sound reasoning","That is a valid argument."],
-["complex","B2","adjective","murakkab","having many connected parts","The system is complex."],
-
-/* C1/C2 */
-
-["ubiquitous","C1","adjective","hamma joyda mavjud","found or present everywhere","Smartphones are ubiquitous today."],
-["meticulous","C1","adjective","juda sinchkov","extremely careful about details","She is meticulous in her research."],
-["exacerbate","C1","verb","yanada yomonlashtirmoq","to make a problem worse","The policy may exacerbate inequality."],
-["corroborate","C1","verb","tasdiqlamoq","to confirm with additional evidence","The data corroborates the claim."],
-["contentious","C1","adjective","bahsli","causing disagreement","The issue remains contentious."],
-["unequivocal","C1","adjective","aniq, shubhasiz","leaving no doubt","She gave an unequivocal answer."],
-["deleterious","C1","adjective","zararli","causing harm","The effects may be deleterious."],
-["quintessential","C1","adjective","eng tipik","representing the most typical example","It is a quintessential example."],
-["juxtapose","C1","verb","yonma-yon qo'ymoq","to place together for comparison","The author juxtaposes two ideas."],
-["circumvent","C1","verb","chetlab o'tmoq","to avoid a problem or rule","They tried to circumvent the restriction."],
-["ambiguous","C1","adjective","noaniq","having more than one possible meaning","The statement is ambiguous."],
-["coherent","C1","adjective","mantiqan izchil","logical and well organized","Her argument is coherent."],
-["compelling","C1","adjective","ishontiruvchi","very convincing","The evidence was compelling."],
-["conventional","C1","adjective","an'anaviy","following accepted methods","They rejected conventional methods."],
-["discrepancy","C1","noun","nomuvofiqlik","a difference between things that should agree","Researchers noticed a discrepancy."],
-["inevitable","C1","adjective","muqarrar","certain to happen","Change is inevitable."],
-["prevalent","C1","adjective","keng tarqalgan","common or widespread","The belief was prevalent."],
-["ameliorate","C2","verb","yaxshilamoq","to make something less severe","The policy may ameliorate poverty."],
-["circumspect","C2","adjective","ehtiyotkor","careful to consider risks","He was circumspect."],
-["esoteric","C2","adjective","tor doiraga tushunarli","understood by a small specialized group","The topic was esoteric."],
-["intransigent","C2","adjective","murosasiz","unwilling to change position","The negotiator remained intransigent."],
-["magnanimous","C2","adjective","olijanob","generous and forgiving","She was magnanimous."],
-["perfunctory","C2","adjective","yuzaki","done with little care","He gave a perfunctory response."],
-["proliferate","C2","verb","tez ko'paymoq","to increase rapidly","Online platforms proliferate."],
-["scrupulous","C2","adjective","juda sinchkov va vijdonli","very careful and honest","She is scrupulous about accuracy."],
-["tenuous","C2","adjective","zaif, ishonchsiz","weak or poorly supported","The connection is tenuous."],
-["vociferous","C2","adjective","baland ovozda talab qiluvchi","expressing opinions loudly","There was vociferous opposition."]
-
-];
-
-
-/* =========================================================
-   CONVERT CURATED DATA
-========================================================= */
-
-const curatedWords =
-  curated.map(x=>({
-    w:x[0],
-    l:x[1],
-    p:x[2],
-    u:x[3],
-    d:x[4],
-    e:x[5],
-    curated:true
-  }));
-
-
-/* =========================================================
-   WORD CLEANING
-========================================================= */
-
-/*
-  We only accept actual alphabetic tokens.
-
-  We do NOT add prefixes.
-  We do NOT add suffixes.
-  We do NOT transform:
-      generation -> irregeneration
-      generate   -> aagenerate
-      something  -> asomething
-
-  Every word remains exactly the word from the source list.
-*/
-
-function cleanWord(value){
-
-  if(!value) return null;
-
-  let word =
-    String(value)
-      .trim()
-      .toLowerCase();
-
-  /*
-    Only plain alphabetic words.
-  */
-
-  if(!/^[a-z]+$/.test(word)){
-    return null;
-  }
-
-  if(word.length < 2 || word.length > 30){
-    return null;
-  }
-
-  /*
-    Reject obvious machine-generated garbage.
-  */
-
-  if(/^(.)\1{4,}$/.test(word)){
-    return null;
-  }
-
-  /*
-    These are NOT applied to genuine words.
-    Only obviously malformed prefixes are removed.
-  */
-
-  if(
-    /^(aa|aaa|aag|zzzz|xxxx|qwerty)/.test(word)
-  ){
-    return null;
-  }
-
-  return word;
-}
-
-
-/* =========================================================
-   WORD LEVEL FALLBACK
-========================================================= */
-
-const curatedMap =
-  new Map(
-    curatedWords.map(w=>[w.w,w])
-  );
-
-function inferLevel(word){
-
-  if(curatedMap.has(word)){
-    return curatedMap.get(word).l;
-  }
-
-  /*
-    Fallback only.
-    Curated words have explicit CEFR levels.
-  */
-
-  const n = word.length;
-
-  if(n<=4) return "A1";
-  if(n<=5) return "A2";
-  if(n<=7) return "B1";
-  if(n<=9) return "B2";
-  if(n<=11) return "C1";
-
-  return "C2";
-}
-
-
-/* =========================================================
-   LARGE WORD BANK
-========================================================= */
-
-let allWords = [];
-let favoritesOnly = false;
-
-
-/*
-  This is deliberately the COMPLETE source list,
-  not a 10k sample.
-
-  The browser receives the whole list and search
-  operates over the entire list.
-*/
-
-async function loadCompleteWordBank(){
-
-  const info =
-    document.getElementById("dictionaryInfo");
-
-  info.textContent =
-    "Loading the complete English word bank...";
-
-  try{
-
-    const response =
-      await fetch(
-        "https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt",
-        {
-          cache:"force-cache"
-        }
-      );
-
-    if(!response.ok){
-      throw new Error("word bank unavailable");
-    }
-
-    const text =
-      await response.text();
-
-    const sourceWords =
-      text
-        .split(/\r?\n/)
-        .map(cleanWord)
-        .filter(Boolean);
-
-    /*
-      Deduplicate.
-    */
-
-    const unique =
-      [...new Set(sourceWords)];
-
-
-    /*
-      IMPORTANT:
-
-      Search will operate on ALL words.
-
-      We are NOT sampling 10k / 16k.
-    */
-
-    const map =
-      new Map();
-
-
-    /*
-      Curated words first.
-      This guarantees basic words and SAT words.
-    */
-
-    curatedWords.forEach(item=>{
-      map.set(item.w,item);
-    });
-
-
-    /*
-      Add every clean source word.
-    */
-
-    unique.forEach(word=>{
-
-      if(map.has(word)){
         return;
-      }
+    }
 
-      map.set(
-        word,
-        {
-          w:word,
-          l:inferLevel(word),
-          p:"other",
-          u:"Translation available in Details",
-          d:"English vocabulary word. Open Details to see a definition.",
-          e:"",
-          curated:false
-        }
-      );
+    /*
+       IMPORTANT:
+       Cancel previous speech first.
+       This prevents old words waiting in the queue.
+    */
+
+    speechSynthesis.cancel();
+
+    const utterance =
+        new SpeechSynthesisUtterance(word);
+
+    let voice = null;
+
+    if(accent === "US"){
+
+        voice = getUSVoice();
+
+        utterance.lang = "en-US";
+
+    }else{
+
+        voice = getUKVoice();
+
+        utterance.lang = "en-GB";
+    }
+
+    if(voice){
+
+        utterance.voice = voice;
+
+    }
+
+    /*
+       Natural speaking speed.
+       Not too slow.
+       Not robotic.
+    */
+
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    speechSynthesis.speak(utterance);
+}
+
+
+/* =========================================================
+   NORMALIZE SEARCH
+========================================================= */
+
+function normalizeWord(text){
+
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[’']/g,"")
+        .replace(/\s+/g," ");
+
+}
+
+
+/* =========================================================
+   LOAD WORD BANK
+========================================================= */
+
+async function loadWordBank(){
+
+    const status =
+        document.getElementById("status");
+
+    /*
+       Add guaranteed core words first.
+    */
+
+    Object.keys(CORE_WORDS).forEach(word => {
+
+        allWords.add(word);
+        wordData.set(word,CORE_WORDS[word]);
 
     });
-
-
-    allWords =
-      [...map.values()]
-        .sort((a,b)=>
-          a.w.localeCompare(b.w)
-        );
-
-
-    info.textContent =
-      `${allWords.length.toLocaleString()} English words loaded. Search works across the entire word bank.`;
-
-    document.getElementById("wordCountHome")
-      .textContent =
-      allWords.length.toLocaleString();
-
-    renderWords();
-
-  }catch(error){
-
-    /*
-      If GitHub is temporarily unavailable,
-      the site still works with the curated list.
-    */
-
-    allWords =
-      curatedWords.slice()
-        .sort((a,b)=>
-          a.w.localeCompare(b.w)
-        );
-
-    info.textContent =
-      `${allWords.length} curated words available. Connect to the internet to load the complete word bank.`;
-
-    renderWords();
-  }
-}
-
-
-/* =========================================================
-   SEARCH ALGORITHM
-========================================================= */
-
-/*
-  This is the important fix.
-
-  Old problem:
-      generation
-  could return:
-      irregeneration
-
-  New logic:
-      1. exact match
-      2. normal starts-with
-      3. word-boundary / clean related matches
-      4. only then broad contains
-
-  Therefore the exact normal word is always first.
-*/
-
-function searchWords(query){
-
-  const q =
-    query.trim().toLowerCase();
-
-  if(!q){
-    return allWords.slice();
-  }
-
-
-  const exact = [];
-  const starts = [];
-  const related = [];
-  const contains = [];
-
-
-  for(const item of allWords){
-
-    const word =
-      item.w.toLowerCase();
-
-
-    /*
-      EXACT:
-      generation -> generation
-    */
-
-    if(word===q){
-
-      exact.push(item);
-      continue;
-    }
-
-
-    /*
-      NORMAL STARTS-WITH:
-      generate -> generated / generating
-      generation -> generations
-    */
-
-    if(word.startsWith(q)){
-
-      starts.push(item);
-      continue;
-    }
-
-
-    /*
-      Related words:
-      Only allow query to occur after a clean boundary.
-
-      This prevents:
-          generation
-      from prioritizing:
-          irregeneration
-
-      because that has a prefix before the query.
-    */
-
-    const index =
-      word.indexOf(q);
-
-    if(index>0){
-
-      const before =
-        word[index-1];
-
-      /*
-        Only allow a boundary such as:
-          -
-          _
-          space
-
-        But source words here are alphabetic,
-        so practically this rejects random prefixes.
-      */
-
-      if(
-        before==="-" ||
-        before==="_" ||
-        before===" "
-      ){
-        related.push(item);
-        continue;
-      }
-
-      /*
-        Broad contains is retained only as
-        the lowest-priority group.
-      */
-
-      contains.push(item);
-    }
-
-  }
-
-
-  /*
-    Exact + starts-with always come first.
-
-    Shorter normal derivatives first:
-      generate
-      generated
-      generates
-      generating
-      generation
-  */
-
-  starts.sort((a,b)=>
-    a.w.length-b.w.length ||
-    a.w.localeCompare(b.w)
-  );
-
-
-  return [
-    ...exact,
-    ...starts,
-    ...related,
-    ...contains
-  ];
-}
-
-
-/* =========================================================
-   HTML ESCAPE
-========================================================= */
-
-function esc(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-
-/* =========================================================
-   DICTIONARY RENDER
-========================================================= */
-
-function renderWords(){
-
-  const grid =
-    document.getElementById("wordsGrid");
-
-  const query =
-    document.getElementById("wordSearch")
-      .value;
-
-  const level =
-    document.getElementById("levelFilter")
-      .value;
-
-  const pos =
-    document.getElementById("posFilter")
-      .value;
-
-
-  let results =
-    searchWords(query);
-
-
-  results =
-    results.filter(item=>{
-
-      if(
-        favoritesOnly &&
-        !favorites.includes(item.w)
-      ){
-        return false;
-      }
-
-      if(
-        level!=="ALL" &&
-        item.l!==level
-      ){
-        return false;
-      }
-
-      if(
-        pos!=="ALL" &&
-        item.p!==pos
-      ){
-        return false;
-      }
-
-      return true;
-    });
-
-
-  const total =
-    results.length;
-
-
-  /*
-    Search covers every word.
-
-    Only visible rendering is limited to 80
-    so the browser does not freeze.
-  */
-
-  const visible =
-    results.slice(0,80);
-
-
-  if(!visible.length){
-
-    grid.innerHTML = `
-      <div class="empty">
-        No matching word found.
-        Try another spelling or remove the filters.
-      </div>
-    `;
-
-    document.getElementById("dictionaryInfo")
-      .textContent =
-      "No matching words.";
-
-    return;
-  }
-
-
-  grid.innerHTML =
-    visible.map(wordCard).join("");
-
-
-  document.getElementById("dictionaryInfo")
-    .textContent =
-    `${total.toLocaleString()} matching words`
-    +
-    (total>80
-      ? " • Showing first 80"
-      : "");
-}
-
-
-/* =========================================================
-   WORD CARD
-========================================================= */
-
-function wordCard(item){
-
-  const saved =
-    favorites.includes(item.w);
-
-
-  return `
-
-    <article class="word-card">
-
-      <div class="word-header">
-
-        <div>
-
-          <div class="word">
-            ${esc(item.w)}
-          </div>
-
-          <div class="pos">
-            ${esc(item.p)}
-          </div>
-
-        </div>
-
-        <span class="level">
-          ${esc(item.l)}
-        </span>
-
-      </div>
-
-
-      <div class="translation">
-        ${esc(item.u)}
-      </div>
-
-
-      <div class="definition">
-        ${esc(item.d)}
-      </div>
-
-
-      ${
-        item.e
-        ? `
-          <div class="example">
-            <strong>Example:</strong>
-            ${esc(item.e)}
-          </div>
-        `
-        : ""
-      }
-
-
-      <div class="word-actions">
-
-        <button
-          class="small-btn"
-          onclick='speakWord(${JSON.stringify(item.w)},"US")'
-        >
-          🔊 US
-        </button>
-
-        <button
-          class="small-btn"
-          onclick='speakWord(${JSON.stringify(item.w)},"UK")'
-        >
-          🔊 UK
-        </button>
-
-        <button
-          class="small-btn favorite ${saved?"active":""}"
-          onclick='toggleFavorite(${JSON.stringify(item.w)})'
-        >
-          ${saved?"★ Saved":"☆ Save"}
-        </button>
-
-        ${
-          !item.curated
-          ? `
-            <button
-              class="small-btn"
-              onclick='loadDetails(${JSON.stringify(item.w)})'
-            >
-              Details
-            </button>
-          `
-          : ""
-        }
-
-      </div>
-
-    </article>
-
-  `;
-}
-
-
-/* =========================================================
-   FAVORITES
-========================================================= */
-
-function toggleFavorite(word){
-
-  const index =
-    favorites.indexOf(word);
-
-  if(index===-1){
-
-    favorites.push(word);
-    toast("Added to favorites.");
-
-  }else{
-
-    favorites.splice(index,1);
-    toast("Removed from favorites.");
-
-  }
-
-  saveFavorites();
-  renderWords();
-  updateProgress();
-}
-
-function toggleFavorites(){
-
-  favoritesOnly =
-    !favoritesOnly;
-
-  renderWords();
-
-  toast(
-    favoritesOnly
-      ? "Showing favorites."
-      : "Showing all words."
-  );
-}
-
-
-/* =========================================================
-   DETAILS FOR WORDS FROM LARGE BANK
-========================================================= */
-
-async function loadDetails(word){
-
-  toast("Loading definition...");
-
-  try{
-
-    const response =
-      await fetch(
-        "https://api.dictionaryapi.dev/api/v2/entries/en/" +
-        encodeURIComponent(word)
-      );
-
-    if(!response.ok){
-      throw new Error();
-    }
-
-    const data =
-      await response.json();
-
-    const first =
-      data[0];
-
-    let definition = "";
-    let part = "other";
-    let example = "";
-
-    if(
-      first &&
-      first.meanings &&
-      first.meanings.length
-    ){
-
-      part =
-        first.meanings[0].partOfSpeech ||
-        "other";
-
-      const defs =
-        first.meanings[0].definitions ||
-        [];
-
-      if(defs[0]){
-
-        definition =
-          defs[0].definition || "";
-
-        example =
-          defs[0].example || "";
-      }
-    }
-
-
-    /*
-      Uzbek translation.
-    */
-
-    let translation =
-      "Translation unavailable";
 
 
     try{
 
-      const translationResponse =
-        await fetch(
-          "https://api.mymemory.translated.net/get?q=" +
-          encodeURIComponent(word) +
-          "&langpair=en|uz"
+        status.textContent =
+            "Loading large English word bank...";
+
+        const response =
+            await fetch(WORD_LIST_URL);
+
+        if(!response.ok){
+            throw new Error("Word list failed");
+        }
+
+        const text =
+            await response.text();
+
+        const words =
+            text.split(/\r?\n/);
+
+        for(const raw of words){
+
+            const word =
+                raw.trim().toLowerCase();
+
+            if(
+                word &&
+                /^[a-z]+$/.test(word)
+            ){
+
+                allWords.add(word);
+
+            }
+
+        }
+
+        status.textContent =
+            `${allWords.size.toLocaleString()} English words available`;
+
+    }catch(error){
+
+        status.textContent =
+            `${allWords.size} core words available. External word bank could not load.`;
+
+    }
+
+    renderResults("");
+
+}
+
+
+/* =========================================================
+   SEARCH ENGINE
+========================================================= */
+
+function searchWords(query){
+
+    query = normalizeWord(query);
+
+    const level =
+        document.getElementById("levelFilter").value;
+
+    const pos =
+        document.getElementById("posFilter").value;
+
+
+    /*
+       First filter the word list.
+    */
+
+    let candidates = [];
+
+    for(const word of allWords){
+
+        const data = wordData.get(word);
+
+        if(level !== "all"){
+
+            if(!data || data.level !== level){
+                continue;
+            }
+
+        }
+
+        if(pos !== "all"){
+
+            if(!data || data.pos !== pos){
+                continue;
+            }
+
+        }
+
+        candidates.push(word);
+
+    }
+
+
+    if(!query){
+
+        return candidates
+            .sort((a,b) =>
+                a.length - b.length ||
+                a.localeCompare(b)
+            )
+            .slice(0,60);
+    }
+
+
+    /*
+       EXACT MATCH
+       If user searches "generation",
+       generation must come first.
+    */
+
+    const exact =
+        candidates.filter(w => w === query);
+
+    if(exact.length){
+
+        return exact;
+
+    }
+
+
+    /*
+       PREFIX MATCH
+       "gener" -> generation, generate, general...
+    */
+
+    const prefix =
+        candidates.filter(w =>
+            w.startsWith(query)
         );
 
-      if(translationResponse.ok){
 
-        const translationData =
-          await translationResponse.json();
+    if(prefix.length){
 
-        if(
-          translationData.responseData &&
-          translationData.responseData.translatedText
-        ){
+        return prefix
+            .sort((a,b) =>
+                a.length - b.length ||
+                a.localeCompare(b)
+            )
+            .slice(0,80);
 
-          translation =
-            translationData
-              .responseData
-              .translatedText;
-        }
-      }
-
-    }catch(e){}
-
-
-    const item =
-      allWords.find(x=>x.w===word);
-
-    if(item){
-
-      item.p = part;
-
-      if(definition){
-        item.d = definition;
-      }
-
-      if(example){
-        item.e = example;
-      }
-
-      if(translation){
-        item.u = translation;
-      }
     }
 
 
-    renderWords();
+    /*
+       IMPORTANT:
+       We DO NOT show internal substring matches
+       when prefix/exact results exist.
 
-    toast("Definition loaded.");
+       Example:
+       generation
+       will NOT randomly return
+       irregeneration.
+    */
 
-  }catch(error){
+    const contains =
+        candidates.filter(w =>
+            w.includes(query)
+        );
 
-    toast("Definition could not be loaded.");
-  }
+    return contains
+        .sort((a,b) =>
+            a.length - b.length ||
+            a.localeCompare(b)
+        )
+        .slice(0,80);
 }
 
 
 /* =========================================================
-   DICTIONARY EVENTS
+   GET BASIC DATA
 ========================================================= */
 
-document
-  .getElementById("wordSearch")
-  .addEventListener(
-    "input",
-    renderWords
-  );
+function basicData(word){
 
-document
-  .getElementById("levelFilter")
-  .addEventListener(
-    "change",
-    renderWords
-  );
+    if(wordData.has(word)){
 
-document
-  .getElementById("posFilter")
-  .addEventListener(
-    "change",
-    renderWords
-  );
+        return wordData.get(word);
 
-
-/* =========================================================
-   SAT QUESTION GENERATORS
-========================================================= */
-
-const names = [
-  "Maya","Daniel","Aisha","Leo","Nora",
-  "Ethan","Sofia","Adam","Lina","Marcus"
-];
-
-const topics = [
-  "urban gardens",
-  "renewable energy",
-  "museum design",
-  "bird migration",
-  "public transportation",
-  "language learning",
-  "water conservation",
-  "digital archives",
-  "forest restoration",
-  "scientific education"
-];
-
-function difficulty(i){
-
-  if(i<40) return "Easy";
-  if(i<80) return "Medium";
-  return "Hard";
-}
-
-
-/* =========================================================
-   READING
-========================================================= */
-
-function makeReading(i){
-
-  const d =
-    difficulty(i);
-
-  const name =
-    names[i%names.length];
-
-  const topic =
-    topics[i%topics.length];
-
-  const bank = [
-
-    {
-      p:
-`${name} studied how ${topic} affected local communities. The study found that participants changed their habits most when they could see a direct connection between the project and an everyday benefit. The researchers concluded that information was more effective when it was paired with a visible practical result.`,
-
-      q:"What is the main idea of the passage?",
-
-      o:[
-        "Information can be more persuasive when connected to a practical benefit.",
-        "Communities generally reject new information.",
-        "Researchers should avoid studying everyday behavior.",
-        "The project produced no useful results."
-      ],
-
-      a:0,
-
-      e:
-"Although the study involved information, its central finding was that visible practical benefits made the information more effective."
-    },
-
-    {
-      p:
-`A researcher compared two groups of students learning about ${topic}. One group received a long explanation at the beginning of the course. The other group received short explanations immediately before each activity. Both groups learned the same concepts, but the second group remembered more details one week later.`,
-
-      q:"Which inference is best supported?",
-
-      o:[
-        "Students may remember information better when explanations are closely connected to activities.",
-        "Long explanations are always ineffective.",
-        "The two groups studied different concepts.",
-        "The first group did not finish the course."
-      ],
-
-      a:0,
-
-      e:
-"The group receiving explanations immediately before related activities remembered more details later."
-    },
-
-    {
-      p:
-`The article describes a change in ${topic}. Rather than treating the change as entirely positive or negative, the author explains that its effects depend on how communities respond. Several cities experienced different outcomes despite having similar initial conditions.`,
-
-      q:"The author's discussion mainly serves to",
-
-      o:[
-        "show that the effects of a change can depend on context.",
-        "prove that the change should be stopped.",
-        "argue that cities always respond identically.",
-        "describe only one successful experiment."
-      ],
-
-      a:0,
-
-      e:
-"The passage emphasizes that similar starting conditions can produce different outcomes."
-    },
-
-    {
-      p:
-`Researchers examining ${topic} noticed that areas with the largest investments did not always produce the largest improvements. Moderate investments paired with consistent maintenance sometimes produced stronger long-term results.`,
-
-      q:"Which statement is directly supported?",
-
-      o:[
-        "Larger investments do not necessarily produce better long-term results.",
-        "Investment has no relationship with improvement.",
-        "Maintenance is unnecessary.",
-        "Every area produced identical results."
-      ],
-
-      a:0,
-
-      e:
-"The passage directly states that larger investments did not always lead to larger improvements."
-    },
-
-    {
-      p:
-`A report on ${topic} distinguishes between short-term and long-term effects. Some changes produced immediate improvements, but those improvements disappeared when the supporting program ended. Other changes developed more slowly and continued after the program was reduced.`,
-
-      q:"Why does the author distinguish between short-term and long-term effects?",
-
-      o:[
-        "To show that immediate improvement is not the only measure of success.",
-        "To prove that short-term programs are always harmful.",
-        "To explain why the program was never implemented.",
-        "To compare two unrelated subjects."
-      ],
-
-      a:0,
-
-      e:
-"The distinction emphasizes the importance of lasting effects, not only immediate results."
-    },
-
-    {
-      p:
-`When analyzing ${topic}, researchers initially expected one factor to dominate the results. Instead, several smaller factors interacted. A change in one factor altered the effect of another, making simple explanations less accurate.`,
-
-      q:"What does the passage suggest about the researchers' initial expectation?",
-
-      o:[
-        "It was too simple to explain the observed results.",
-        "It was completely confirmed.",
-        "It was based on no evidence.",
-        "It was unrelated to the research."
-      ],
-
-      a:0,
-
-      e:
-"The interaction among several factors made the original single-factor explanation inadequate."
     }
 
-  ];
+    return {
 
-  const base =
-    bank[i%bank.length];
+        uz:"Translation loading...",
+        pos:"English word",
+        level:"—",
+        definition:"Definition available in Details.",
+        example:"Example available in Details.",
+        synonyms:"—"
 
-  const rotation =
-    i%4;
+    };
 
-  const options =
-    Array(4)
-      .fill(null)
-      .map((_,x)=>
-        base.o[
-          (x-rotation+4)%4
-        ]
-      );
-
-  const correctText =
-    base.o[base.a];
-
-  const answer =
-    options.indexOf(correctText);
-
-  return {
-    type:"reading",
-    difficulty:d,
-    passage:base.p,
-    question:base.q,
-    options,
-    answer,
-    explanation:base.e
-  };
 }
 
 
 /* =========================================================
-   WRITING
+   RENDER
 ========================================================= */
 
-function makeWriting(i){
+function renderResults(query){
 
-  const d =
-    difficulty(i);
+    const results =
+        document.getElementById("results");
 
-  const bank = [
+    const words =
+        searchWords(query);
 
-    {
-      p:
-"Researchers studying urban trees found that shaded streets were cooler than nearby streets without trees.",
+    results.innerHTML = "";
 
-      q:"Which choice completes the sentence correctly?",
+    if(!words.length){
 
-      o:[
-        "trees reduce surface temperatures.",
-        "trees reduces surface temperatures.",
-        "trees reducing surface temperatures.",
-        "trees has reduced surface temperatures."
-      ],
+        results.innerHTML = `
+            <div class="empty">
+                <h3>No exact word found</h3>
+                <p>Try another spelling.</p>
+            </div>
+        `;
 
-      a:0,
+        return;
 
-      e:
-"The plural subject 'trees' takes the plural verb 'reduce.'"
-    },
-
-    {
-      p:
-"Many students initially find advanced algebra difficult. _____, regular practice can make unfamiliar problems more manageable.",
-
-      q:"Which transition best fits the text?",
-
-      o:[
-        "However,",
-        "For example,",
-        "Similarly,",
-        "In addition to,"
-      ],
-
-      a:0,
-
-      e:
-"'However' correctly signals a contrast."
-    },
-
-    {
-      p:
-"The museum expanded its digital archive in 2024. The archive now contains thousands of photographs that researchers can access remotely.",
-
-      q:"Which choice most effectively combines the sentences?",
-
-      o:[
-        "After expanding its digital archive in 2024, the museum now offers researchers remote access to thousands of photographs.",
-        "The museum expanded its digital archive in 2024, and thousands of photographs, researchers can access remotely.",
-        "The museum, expanding its digital archive, photographs are now accessible.",
-        "In 2024 the archive, thousands of photographs are accessible."
-      ],
-
-      a:0,
-
-      e:
-"The first option combines both ideas clearly and grammatically."
-    },
-
-    {
-      p:
-"The experiment was repeated several times, _____ the researchers wanted to determine whether the original result was reliable.",
-
-      q:"Which choice completes the sentence?",
-
-      o:[
-        "because",
-        "although",
-        "unless",
-        "whereas"
-      ],
-
-      a:0,
-
-      e:
-"'Because' expresses the reason for repeating the experiment."
-    },
-
-    {
-      p:
-"The two reports reached different conclusions. The first report emphasized economic effects, while the second focused on environmental effects.",
-
-      q:"Which transition best introduces the second idea?",
-
-      o:[
-        "Specifically,",
-        "For example,",
-        "In contrast,",
-        "As a result,"
-      ],
-
-      a:2,
-
-      e:
-"'In contrast' correctly introduces a difference between the two reports."
     }
 
-  ];
 
-  const base =
-    bank[i%bank.length];
+    words.forEach(word => {
 
-  const rotation =
-    i%4;
+        const data =
+            basicData(word);
 
-  const options =
-    Array(4)
-      .fill(null)
-      .map((_,x)=>
-        base.o[
-          (x-rotation+4)%4
-        ]
-      );
+        const card =
+            document.createElement("article");
 
-  const correctText =
-    base.o[base.a];
+        card.className = "word-card";
 
-  return {
-    type:"writing",
-    difficulty:d,
-    passage:base.p,
-    question:base.q,
-    options,
-    answer:options.indexOf(correctText),
-    explanation:base.e
-  };
-}
+        card.innerHTML = `
 
+            <div class="word-top">
 
-/* =========================================================
-   MATH
-========================================================= */
+                <div>
 
-function makeMath(i){
+                    <div class="word">
+                        ${escapeHTML(word)}
+                    </div>
 
-  const d =
-    difficulty(i);
+                    <div class="pos">
+                        ${escapeHTML(data.pos || "word")}
+                    </div>
 
-  const type =
-    i%8;
+                </div>
 
-  let q,options,answer,explanation;
+                <div class="badges">
 
+                    ${
+                        data.level !== "—"
+                        ?
+                        `<span class="badge">
+                            ${escapeHTML(data.level)}
+                         </span>`
+                        :
+                        ""
+                    }
 
-  if(type===0){
+                </div>
 
-    const x =
-      3+(i%8);
-
-    const b =
-      4+(i%6);
-
-    const c =
-      5*x+b;
-
-    q =
-      `If 5x + ${b} = ${c}, what is x?`;
-
-    options=[
-      String(x),
-      String(x+1),
-      String(x-1),
-      String(x+2)
-    ];
-
-    answer=0;
-
-    explanation=
-      `Subtract ${b} from both sides and divide by 5. x = ${x}.`;
-
-  }
-
-  else if(type===1){
-
-    const base =
-      100+(i%8)*50;
-
-    const percent =
-      10+(i%5)*5;
-
-    const increase =
-      base*percent/100;
-
-    q =
-      `A quantity of ${base} is increased by ${percent}%. What is the new quantity?`;
-
-    options=[
-      String(base+increase),
-      String(base+percent),
-      String(base-increase),
-      String(base+increase+percent)
-    ];
-
-    answer=0;
-
-    explanation=
-      `${percent}% of ${base} is ${increase}. Therefore the new value is ${base+increase}.`;
-
-  }
-
-  else if(type===2){
-
-    const a =
-      2+(i%5);
-
-    const b =
-      3+(i%4);
-
-    const x=4;
-
-    const result =
-      a*x+b;
-
-    q =
-      `If y = ${a}x + ${b}, what is y when x = ${x}?`;
-
-    options=[
-      String(result),
-      String(result+2),
-      String(result-2),
-      String(result+4)
-    ];
-
-    answer=0;
-
-    explanation=
-      `Substitute x = ${x}: y = ${a}(${x}) + ${b} = ${result}.`;
-
-  }
-
-  else if(type===3){
-
-    const side =
-      4+(i%7);
-
-    const area =
-      side*side;
-
-    q =
-      `A square has side length ${side}. What is its area?`;
-
-    options=[
-      String(area),
-      String(side*4),
-      String(area+side),
-      String(side+2)
-    ];
-
-    answer=0;
-
-    explanation=
-      `Area = side² = ${side}² = ${area}.`;
-
-  }
-
-  else if(type===4){
-
-    const length =
-      5+(i%8);
-
-    const width =
-      3+(i%5);
-
-    const area =
-      length*width;
-
-    q =
-      `A rectangle has length ${length} and width ${width}. What is its area?`;
-
-    options=[
-      String(area),
-      String(length+width),
-      String(2*(length+width)),
-      String(area+length)
-    ];
-
-    answer=0;
-
-    explanation=
-      `Area = length × width = ${length} × ${width} = ${area}.`;
-
-  }
-
-  else if(type===5){
-
-    const mean =
-      10+(i%7);
-
-    const a=mean-2;
-    const b=mean+1;
-    const c=mean+1;
-
-    q =
-      `What is the mean of ${a}, ${b}, and ${c}?`;
-
-    options=[
-      String(mean),
-      String(mean+1),
-      String(mean-1),
-      String(mean+2)
-    ];
-
-    answer=0;
-
-    explanation=
-      `(${a}+${b}+${c}) ÷ 3 = ${mean}.`;
-
-  }
-
-  else if(type===6){
-
-    const slope =
-      2+(i%4);
-
-    const changeX =
-      3+(i%5);
-
-    const changeY =
-      slope*changeX;
-
-    q =
-      `A line has slope ${slope}. If x increases by ${changeX}, by how much does y increase?`;
-
-    options=[
-      String(changeY),
-      String(changeX),
-      String(slope+changeX),
-      String(changeY+1)
-    ];
-
-    answer=0;
-
-    explanation=
-      `Change in y = slope × change in x = ${slope} × ${changeX} = ${changeY}.`;
-
-  }
-
-  else{
-
-    const total =
-      60+(i%8)*10;
-
-    const part =
-      20+(i%4)*5;
-
-    const percent =
-      part/total*100;
-
-    q =
-      `${part} is what percent of ${total}?`;
-
-    options=[
-      `${percent}%`,
-      `${percent+5}%`,
-      `${percent-5}%`,
-      `${percent+10}%`
-    ];
-
-    answer=0;
-
-    explanation=
-      `${part} ÷ ${total} × 100 = ${percent}%.`;
-
-  }
-
-
-  const rotation =
-    i%4;
-
-  const correctText =
-    options[answer];
-
-  const rotated =
-    Array(4)
-      .fill(null)
-      .map((_,x)=>
-        options[
-          (x-rotation+4)%4
-        ]
-      );
-
-  return {
-    type:"math",
-    difficulty:d,
-    passage:"",
-    question:q,
-    options:rotated,
-    answer:rotated.indexOf(correctText),
-    explanation
-  };
-}
-
-
-/* =========================================================
-   CREATE QUESTIONS
-========================================================= */
-
-const readingQuestions =
-  Array.from(
-    {length:120},
-    (_,i)=>makeReading(i)
-  );
-
-const writingQuestions =
-  Array.from(
-    {length:120},
-    (_,i)=>makeWriting(i)
-  );
-
-const mathQuestions =
-  Array.from(
-    {length:120},
-    (_,i)=>makeMath(i)
-  );
-
-
-/* =========================================================
-   QUIZ STATE
-========================================================= */
-
-const quiz = {
-
-  reading:{
-    questions:readingQuestions,
-    current:0,
-    selected:null,
-    checked:false,
-    done:{}
-  },
-
-  writing:{
-    questions:writingQuestions,
-    current:0,
-    selected:null,
-    checked:false,
-    done:{}
-  },
-
-  math:{
-    questions:mathQuestions,
-    current:0,
-    selected:null,
-    checked:false,
-    done:{}
-  }
-
-};
-
-let currentEnglish="reading";
-
-
-/* =========================================================
-   ENGLISH TABS
-========================================================= */
-
-function switchEnglish(type){
-
-  currentEnglish=type;
-
-  document
-    .getElementById("readingTab")
-    .classList.toggle(
-      "active",
-      type==="reading"
-    );
-
-  document
-    .getElementById("writingTab")
-    .classList.toggle(
-      "active",
-      type==="writing"
-    );
-
-  renderQuiz(
-    type,
-    "englishQuiz"
-  );
-}
-
-
-/* =========================================================
-   QUIZ RENDER
-========================================================= */
-
-function renderQuiz(type,containerId){
-
-  const state =
-    quiz[type];
-
-  const q =
-    state.questions[state.current];
-
-  const percent =
-    ((state.current+1) /
-    state.questions.length)*100;
-
-
-  const optionsHTML =
-    q.options.map((option,i)=>{
-
-      let cls="option";
-
-      if(state.selected===i){
-        cls+=" selected";
-      }
-
-      if(state.checked){
-
-        if(i===q.answer){
-          cls+=" correct";
-        }
-
-        if(
-          i===state.selected &&
-          i!==q.answer
-        ){
-          cls+=" wrong";
-        }
-      }
-
-      return `
-        <button
-          class="${cls}"
-          onclick="selectAnswer('${type}',${i})"
-        >
-          ${String.fromCharCode(65+i)}.
-          ${esc(option)}
-        </button>
-      `;
-
-    }).join("");
-
-
-  document.getElementById(containerId)
-    .innerHTML=`
-
-      <div class="sat-header">
-
-        <div class="sat-top">
-
-          <div>
-
-            <h2>
-              ${
-                type==="reading"
-                ? "SAT Reading"
-                : type==="writing"
-                ? "SAT Writing"
-                : "SAT Math"
-              }
-            </h2>
-
-            <div class="difficulty">
-              ${q.difficulty}
             </div>
 
-          </div>
+            <div class="translation">
+                ${escapeHTML(data.uz || "—")}
+            </div>
 
-          <strong>
-            Question ${state.current+1}
-            / ${state.questions.length}
-          </strong>
+            <div class="definition">
+                ${escapeHTML(data.definition || "—")}
+            </div>
+
+            <div class="example">
+                ${escapeHTML(data.example || "—")}
+            </div>
+
+            <div class="buttons">
+
+                <button
+                    class="us"
+                    data-action="speak-us"
+                    data-word="${escapeAttr(word)}">
+                    🇺🇸 US 🔊
+                </button>
+
+                <button
+                    class="uk"
+                    data-action="speak-uk"
+                    data-word="${escapeAttr(word)}">
+                    🇬🇧 UK 🔊
+                </button>
+
+                <button
+                    class="details"
+                    data-action="details"
+                    data-word="${escapeAttr(word)}">
+                    DETAILS
+                </button>
+
+            </div>
+
+        `;
+
+        results.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+async function openDetails(word){
+
+    const modal =
+        document.getElementById("modal");
+
+    const content =
+        document.getElementById("modalContent");
+
+    const title =
+        document.getElementById("modalWord");
+
+    title.textContent = word;
+
+    modal.classList.add("show");
+
+    const local =
+        wordData.get(word);
+
+    content.innerHTML = `
+
+        <div class="pronunciation-box">
+
+            <div class="pronunciation-title">
+                PRONUNCIATION
+            </div>
+
+            <div class="pronunciation-buttons">
+
+                <button
+                    class="us-large"
+                    onclick="speakWord(${JSON.stringify(word)} ,'US')">
+                    🇺🇸 American
+                </button>
+
+                <button
+                    class="uk-large"
+                    onclick="speakWord(${JSON.stringify(word)} ,'UK')">
+                    🇬🇧 British
+                </button>
+
+            </div>
+
+            <div class="voice-info" id="voiceInfo">
+                Selecting the best available native-region voice...
+            </div>
 
         </div>
-
-        <div class="progress-wrap">
-
-          <div class="progress">
-            <div
-              class="progress-fill"
-              style="width:${percent}%"
-            ></div>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="question-card">
 
         ${
-          q.passage
-          ? `<div class="passage">${esc(q.passage)}</div>`
-          : ""
+            local
+            ?
+            `
+            <div class="detail-row">
+                <div class="detail-label">
+                    Uzbek
+                </div>
+                <div class="detail-value">
+                    ${escapeHTML(local.uz || "—")}
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">
+                    Part of Speech
+                </div>
+                <div class="detail-value">
+                    ${escapeHTML(local.pos || "—")}
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">
+                    CEFR Level
+                </div>
+                <div class="detail-value">
+                    ${escapeHTML(local.level || "—")}
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">
+                    Definition
+                </div>
+                <div class="detail-value">
+                    ${escapeHTML(local.definition || "—")}
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">
+                    Example
+                </div>
+                <div class="detail-value">
+                    ${escapeHTML(local.example || "—")}
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">
+                    Synonyms
+                </div>
+                <div class="detail-value">
+                    ${escapeHTML(local.synonyms || "—")}
+                </div>
+            </div>
+            `
+            :
+            `
+            <div class="detail-row">
+                <div class="detail-label">
+                    Information
+                </div>
+                <div class="detail-value">
+                    Loading dictionary information...
+                </div>
+            </div>
+            `
         }
-
-        <div class="question-label">
-          ${q.difficulty.toUpperCase()}
-        </div>
-
-        <div class="question">
-          ${esc(q.question)}
-        </div>
-
-        <div class="options">
-          ${optionsHTML}
-        </div>
-
-
-        <div
-          class="explanation ${state.checked?"show":""}"
-        >
-          <strong>
-            ${
-              state.selected===q.answer
-              ? "Correct!"
-              : "Explanation"
-            }
-          </strong>
-          <br>
-          ${esc(q.explanation)}
-        </div>
-
-
-        <div class="controls">
-
-          <button
-            class="btn btn-light"
-            onclick="previousQuestion('${type}','${containerId}')"
-            ${state.current===0?"disabled":""}
-          >
-            ← Previous
-          </button>
-
-          <button
-            class="btn btn-primary"
-            onclick="checkAnswer('${type}')"
-            ${
-              state.checked ||
-              state.selected===null
-              ? "disabled"
-              : ""
-            }
-          >
-            Check Answer
-          </button>
-
-          <button
-            class="btn btn-primary"
-            onclick="nextQuestion('${type}','${containerId}')"
-          >
-            ${
-              state.current===
-              state.questions.length-1
-              ? "Restart"
-              : "Next →"
-            }
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="question-nav">
-
-        ${
-          state.questions
-            .map((_,i)=>`
-
-              <button
-                class="qbtn
-                  ${i===state.current?"current":""}
-                  ${state.done[i]?"done":""}
-                "
-                onclick="goQuestion('${type}',${i},'${containerId}')"
-              >
-                ${i+1}
-              </button>
-
-            `)
-            .join("")
-        }
-
-      </div>
 
     `;
+
+
+    /*
+       If word isn't in our curated dictionary,
+       get complete information from Dictionary API.
+    */
+
+    if(!local){
+
+        await fetchExternalDetails(word);
+
+    }else{
+
+        updateVoiceInfo();
+
+    }
+
 }
 
 
 /* =========================================================
-   QUIZ ACTIONS
+   EXTERNAL DICTIONARY DETAILS
 ========================================================= */
 
-function selectAnswer(type,index){
+async function fetchExternalDetails(word){
 
-  const state =
-    quiz[type];
+    const content =
+        document.getElementById("modalContent");
 
-  if(state.checked){
-    return;
-  }
+    try{
 
-  state.selected=index;
+        const response =
+            await fetch(
+                "https://api.dictionaryapi.dev/api/v2/entries/en/" +
+                encodeURIComponent(word)
+            );
 
-  renderQuiz(
-    type,
-    type==="math"
-      ? "mathQuiz"
-      : "englishQuiz"
-  );
-}
+        if(!response.ok){
+            throw new Error("Not found");
+        }
+
+        const data =
+            await response.json();
+
+        const entry =
+            data[0];
+
+        let definition = "";
+        let example = "";
+        let pos = "";
+        let phonetic = "";
+
+        if(entry.phonetic){
+
+            phonetic = entry.phonetic;
+
+        }
+
+        for(const meaning of entry.meanings || []){
+
+            if(!pos){
+                pos = meaning.partOfSpeech || "";
+            }
+
+            if(
+                meaning.definitions &&
+                meaning.definitions.length
+            ){
+
+                const d =
+                    meaning.definitions[0];
+
+                if(!definition){
+
+                    definition =
+                        d.definition || "";
+
+                }
+
+                if(!example && d.example){
+
+                    example =
+                        d.example;
+
+                }
+
+            }
+
+        }
 
 
-function checkAnswer(type){
+        let translation =
+            "Translation unavailable";
 
-  const state =
-    quiz[type];
+        /*
+           Uzbek translation
+        */
 
-  if(
-    state.selected===null ||
-    state.checked
-  ){
-    return;
-  }
+        try{
 
-  const q =
-    state.questions[state.current];
+            const trResponse =
+                await fetch(
+                    "https://api.mymemory.translated.net/get?q=" +
+                    encodeURIComponent(word) +
+                    "&langpair=en|uz"
+                );
 
-  state.checked=true;
-  state.done[state.current]=true;
+            if(trResponse.ok){
+
+                const tr =
+                    await trResponse.json();
+
+                if(
+                    tr.responseData &&
+                    tr.responseData.translatedText
+                ){
+
+                    translation =
+                        tr.responseData.translatedText;
+
+                }
+
+            }
+
+        }catch(e){}
 
 
-  if(type==="reading"){
+        wordData.set(word,{
 
-    stats.readingAttempted++;
+            uz:translation,
+            pos:pos || "word",
+            level:"—",
+            definition:
+                definition || "No definition found.",
+            example:
+                example || "No example available.",
+            synonyms:"See dictionary details."
 
-    if(state.selected===q.answer){
-      stats.readingCorrect++;
+        });
+
+
+        content.innerHTML = `
+
+            <div class="pronunciation-box">
+
+                <div class="pronunciation-title">
+                    PRONUNCIATION
+                </div>
+
+                <div class="pronunciation-buttons">
+
+                    <button
+                        class="us-large"
+                        onclick="speakWord(${JSON.stringify(word)},'US')">
+                        🇺🇸 American
+                    </button>
+
+                    <button
+                        class="uk-large"
+                        onclick="speakWord(${JSON.stringify(word)},'UK')">
+                        🇬🇧 British
+                    </button>
+
+                </div>
+
+                <div class="voice-info" id="voiceInfo">
+                    Loading available regional voice...
+                </div>
+
+            </div>
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Uzbek
+                </div>
+
+                <div class="detail-value">
+                    ${escapeHTML(translation)}
+                </div>
+
+            </div>
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Part of Speech
+                </div>
+
+                <div class="detail-value">
+                    ${escapeHTML(pos || "—")}
+                </div>
+
+            </div>
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    IPA / Phonetic
+                </div>
+
+                <div class="detail-value">
+                    ${escapeHTML(phonetic || "—")}
+                </div>
+
+            </div>
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Definition
+                </div>
+
+                <div class="detail-value">
+                    ${escapeHTML(definition || "—")}
+                </div>
+
+            </div>
+
+            <div class="detail-row">
+
+                <div class="detail-label">
+                    Example
+                </div>
+
+                <div class="detail-value">
+                    ${escapeHTML(example || "—")}
+                </div>
+
+            </div>
+
+        `;
+
+        updateVoiceInfo();
+
+    }catch(error){
+
+        content.innerHTML = `
+
+            <div class="pronunciation-box">
+
+                <div class="pronunciation-title">
+                    PRONUNCIATION
+                </div>
+
+                <div class="pronunciation-buttons">
+
+                    <button
+                        class="us-large"
+                        onclick="speakWord(${JSON.stringify(word)},'US')">
+                        🇺🇸 American
+                    </button>
+
+                    <button
+                        class="uk-large"
+                        onclick="speakWord(${JSON.stringify(word)},'UK')">
+                        🇬🇧 British
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="empty">
+
+                <h3>Details unavailable</h3>
+
+                <p>
+                    The word was found, but the external dictionary
+                    did not return full information.
+                </p>
+
+            </div>
+
+        `;
+
+        updateVoiceInfo();
+
     }
 
-  }else if(type==="writing"){
-
-    stats.writingAttempted++;
-
-    if(state.selected===q.answer){
-      stats.writingCorrect++;
-    }
-
-  }else{
-
-    stats.mathAttempted++;
-
-    if(state.selected===q.answer){
-      stats.mathCorrect++;
-    }
-
-  }
-
-  saveStats();
-
-  renderQuiz(
-    type,
-    type==="math"
-      ? "mathQuiz"
-      : "englishQuiz"
-  );
-}
-
-
-function nextQuestion(type,containerId){
-
-  const state =
-    quiz[type];
-
-  if(
-    state.current===
-    state.questions.length-1
-  ){
-
-    state.current=0;
-
-  }else{
-
-    state.current++;
-  }
-
-  state.selected=null;
-  state.checked=false;
-
-  renderQuiz(
-    type,
-    containerId
-  );
-}
-
-
-function previousQuestion(type,containerId){
-
-  const state =
-    quiz[type];
-
-  if(state.current>0){
-    state.current--;
-  }
-
-  state.selected=null;
-  state.checked=false;
-
-  renderQuiz(
-    type,
-    containerId
-  );
-}
-
-
-function goQuestion(
-  type,
-  index,
-  containerId
-){
-
-  const state =
-    quiz[type];
-
-  state.current=index;
-  state.selected=null;
-  state.checked=false;
-
-  renderQuiz(
-    type,
-    containerId
-  );
 }
 
 
 /* =========================================================
-   PROGRESS
+   SHOW ACTUAL VOICE
 ========================================================= */
 
-function updateProgress(){
+function updateVoiceInfo(){
 
-  document.getElementById("favCount")
-    .textContent =
-    favorites.length;
+    const box =
+        document.getElementById("voiceInfo");
 
-  document.getElementById("readingScore")
-    .textContent =
-    stats.readingCorrect;
+    if(!box) return;
 
-  document.getElementById("writingScore")
-    .textContent =
-    stats.writingCorrect;
+    const us =
+        getUSVoice();
 
-  document.getElementById("mathScore")
-    .textContent =
-    stats.mathCorrect;
+    const uk =
+        getUKVoice();
 
-  document.getElementById("readingText")
-    .textContent =
-    `${stats.readingCorrect} correct out of ${stats.readingAttempted} attempted.`;
+    box.innerHTML =
+        "🇺🇸 " +
+        (us
+            ? escapeHTML(us.name)
+            : "Browser default en-US voice")
+        +
+        " &nbsp; | &nbsp; 🇬🇧 " +
+        (uk
+            ? escapeHTML(uk.name)
+            : "Browser default en-GB voice");
 
-  document.getElementById("writingText")
-    .textContent =
-    `${stats.writingCorrect} correct out of ${stats.writingAttempted} attempted.`;
+}
 
-  document.getElementById("mathText")
-    .textContent =
-    `${stats.mathCorrect} correct out of ${stats.mathAttempted} attempted.`;
+
+/* =========================================================
+   EVENT LISTENERS
+========================================================= */
+
+document
+    .getElementById("searchInput")
+    .addEventListener("input", function(){
+
+        renderResults(this.value);
+
+    });
+
+
+document
+    .getElementById("searchButton")
+    .addEventListener("click", function(){
+
+        renderResults(
+            document.getElementById("searchInput").value
+        );
+
+    });
+
+
+document
+    .getElementById("levelFilter")
+    .addEventListener("change", function(){
+
+        renderResults(
+            document.getElementById("searchInput").value
+        );
+
+    });
+
+
+document
+    .getElementById("posFilter")
+    .addEventListener("change", function(){
+
+        renderResults(
+            document.getElementById("searchInput").value
+        );
+
+    });
+
+
+/*
+   ONE event listener for all dictionary buttons.
+   This prevents duplicate listeners.
+*/
+
+document
+    .getElementById("results")
+    .addEventListener("click", function(event){
+
+        const button =
+            event.target.closest("button");
+
+        if(!button) return;
+
+        const action =
+            button.dataset.action;
+
+        const word =
+            button.dataset.word;
+
+        if(!word) return;
+
+        if(action === "speak-us"){
+
+            speakWord(word,"US");
+
+        }
+
+        if(action === "speak-uk"){
+
+            speakWord(word,"UK");
+
+        }
+
+        if(action === "details"){
+
+            openDetails(word);
+
+        }
+
+    });
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+document
+    .getElementById("closeModal")
+    .addEventListener("click", function(){
+
+        document
+            .getElementById("modal")
+            .classList.remove("show");
+
+        if("speechSynthesis" in window){
+
+            speechSynthesis.cancel();
+
+        }
+
+    });
+
+
+document
+    .getElementById("modal")
+    .addEventListener("click", function(event){
+
+        if(event.target === this){
+
+            this.classList.remove("show");
+
+            if("speechSynthesis" in window){
+
+                speechSynthesis.cancel();
+
+            }
+
+        }
+
+    });
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttr(value){
+
+    return escapeHTML(value);
+
 }
 
 
@@ -3230,19 +1920,7 @@ function updateProgress(){
    START
 ========================================================= */
 
-renderQuiz(
-  "reading",
-  "englishQuiz"
-);
-
-renderQuiz(
-  "math",
-  "mathQuiz"
-);
-
-updateProgress();
-
-loadCompleteWordBank();
+loadWordBank();
 
 </script>
 
